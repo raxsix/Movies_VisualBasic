@@ -32,7 +32,7 @@ Namespace My
 
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()> _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.MovieWidget.Form1
+            Me.MainForm = Global.MovieWidget.MovieWidgetForm
         End Sub
     End Class
 End Namespace
