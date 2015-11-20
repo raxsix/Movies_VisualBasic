@@ -1,7 +1,7 @@
 ﻿Public Interface IMovieInterface
 
-    Property intAlgus As Integer
-    Property intLopp As Integer
-    Property strTekst As String
+    Function getJsonString() As String
+
+    Function parseJsonString(ByVal jsonString) As List(Of Movie)
 
 End Interface
