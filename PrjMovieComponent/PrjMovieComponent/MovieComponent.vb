@@ -5,17 +5,25 @@ Imports System.IO
 Imports System.Text
 Imports PrjMovieComponent
 
+
 Public Class CMovieComponent
 
     Implements IMovieInterface
 
+    Const NOW_PLAYING_MOVIES As String = "http://api.themoviedb.org/3/movie/now_playing?api_key=6a77b11f7edadaabb2c8f2b339e947a3"
+    Const UPCOMING_MOVIES As String = "http://api.themoviedb.org/3/movie/upcoming?api_key=6a77b11f7edadaabb2c8f2b339e947a3"
+
     'Funktsioon teeb päringu themoviedb.org vastavasse endpointi ja tagastab json formaadis filmidega seotud andmed
-    Private Function getJsonString() As String Implements IMovieInterface.getJsonString
+    Private Function getJsonString(ByVal valik As Integer) As String Implements IMovieInterface.getJsonString
 
         Dim responseString As String = ""
-
+        Dim request As HttpWebRequest = HttpWebRequest.Create(UPCOMING_MOVIES)
         Try
-            Dim request As HttpWebRequest = HttpWebRequest.Create("http://api.themoviedb.org/3/movie/upcoming?api_key=6a77b11f7edadaabb2c8f2b339e947a3")
+
+            If valik = 2 Then
+                request = HttpWebRequest.Create(NOW_PLAYING_MOVIES)
+            End If
+
             request.Proxy = Nothing 'teeb päringu kiiremaks 
 
             'Create the response and reader
@@ -95,4 +103,5 @@ Public Class CMovieComponent
         Return list  'tagasta list, kus on kõikide filmide andmed sees
 
     End Function
+
 End Class

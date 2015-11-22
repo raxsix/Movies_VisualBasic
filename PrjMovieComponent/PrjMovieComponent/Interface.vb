@@ -1,6 +1,7 @@
-﻿Public Interface IMovieInterface
+﻿
+Public Interface IMovieInterface
 
-    Function getJsonString() As String
+    Function getJsonString(ByVal valik As Integer) As String
 
     Function parseJsonString(ByVal jsonString) As List(Of Movie)
 
